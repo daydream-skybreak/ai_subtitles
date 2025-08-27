@@ -10,11 +10,15 @@
     "typescript": "^5"
   },
   "dependencies": {
+    "@deepgram/sdk": "^4.11.2",
     "@effect/platform": "^0.90.6",
     "@effect/schema": "^0.75.5",
     "assemblyai": "^4.15.0",
+    "cross-fetch": "^4.1.0",
+    "dotenv": "^17.2.1",
     "effect": "^3.17.9",
     "fluent-ffmpeg": "^2.1.3",
+    "play-dl": "^1.9.7",
     "ytdl-core": "^4.11.5"
   }
 }
