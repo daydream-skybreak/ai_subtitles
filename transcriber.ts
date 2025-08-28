@@ -1,8 +1,9 @@
 ﻿import { parentPort } from "worker_threads";
 import fs from "fs";
 import { createClient } from "@deepgram/sdk";
+require("dotenv").config();
 
-const DEEPGRAM_API_KEY = "";
+const DEEPGRAM_API_KEY = process.env.DEEPGRAM_APIKEY;
 const deepgram = createClient(DEEPGRAM_API_KEY);
 
 const connection = deepgram.listen.live({
