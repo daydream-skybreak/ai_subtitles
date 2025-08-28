@@ -14,9 +14,12 @@ const connection = deepgram.listen.live({
 
 let subtitleIndex = 1;
 const srtStream = fs.createWriteStream("transcript.srt");
-
+console.log('this worker is active and running')
 connection.on("transcriptReceived", (msg: any) => {
+    console.log('transcription received', typeof msg)
+    console.log(msg)
     const alt = msg.channel.alternatives[0];
+    console.log(alt)
     if (!alt.words) return;
 
     alt.words.forEach((w: any) => {
@@ -34,6 +37,9 @@ parentPort?.on("message", (data: any) => {
         connection.finish();
         srtStream.end();
     } else {
-        connection.send(data);
+        console.log('receiving message')
+        const arrayBuffer = data.buffer.slice(data.byteOffset, data.byteOffset + data.length);
+        console.log(arrayBuffer)
+        connection.send(arrayBuffer);
     }
 });
